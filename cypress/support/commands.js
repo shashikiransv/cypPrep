@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('getRandomInt', (min, max) => {
+    if (min > max) {
+      throw new Error('The min value must be less than or equal to the max value');
+    }
+    min = Math.ceil(min);  // Round up the min value
+    max = Math.floor(max); // Round down the max value
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  });
